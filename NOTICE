@@ -1,0 +1,30 @@
+OpenExec-Grok
+Copyright 2026 Andrés Ignacio Maldonado (devandmus)
+
+Licensed under the Apache License, Version 2.0.
+You may obtain a copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+This documentation repository is based on the idea of Open Executive,
+created by SenteLabsAI:
+
+    https://github.com/SenteLabsAI/OpenExecutive
+
+Andrés's fork (reference only; not a source of copied files):
+
+    https://github.com/devandmus/OpenExecutive
+
+Open Executive is licensed under the Apache License, Version 2.0.
+Copyright of that project belongs to its contributors
+(see that repository's LICENSE).
+
+What this repository takes from that idea: a council of domain
+specialists; one door; a company/portfolio profile; seats defined by
+result, owner, inputs, outputs, HITL, and will-not-do; and episodic
+decisions that live in writing.
+
+What this repository does not take: application source, prompts,
+evals, fixtures (including Halcyon / Meridian / Tandem), MBA markdown
+knowledge bases, RAG/vector stores, schedulers, chat-platform bots,
+or any FastAPI / Next.js / Fly.io stack. See docs/not-copied.md.
