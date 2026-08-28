@@ -37,21 +37,30 @@ Apache 2.0 exige atribución (ver [NOTICE](../NOTICE)), no un fork disfrazado de
 - Rutinas en los asientos Exec o en Open Executive (charter: cero relojes en el enjambre)
 - Un canal de grupo como sala de debate (el canal Exec está inerte)
 
-## Conocimiento y fixtures — no
+## Conocimiento y fixtures — no copiar aquí
 
-- RAG sobre markdown MBA (`knowledge/builtin/` u equivalente)
+Este repo **no** duplica el MBA. Los bots del enjambre **leen** el fork [devandmus/OpenExecutive](https://github.com/devandmus/OpenExecutive) (`packages/core/openexecutive/knowledge/builtin/` y `prompts/`). No se pega el texto de esos archivos aquí.
+
+No se porta:
+
+- RAG / Chroma / índices vectoriales sobre ese markdown
 - Colección `company_docs` / upload de decks al vector store
 - Fixtures **Halcyon Motors**, **Meridian Petroleum**, **Tandem Robotics**
 - Profiles, rosters o docs de demo de esas empresas
 - Completar un “company profile” de startup de muestra
+- `TALENT_PROMPT` como bot Grok (existe en la fuente; no está instanciado)
 
-## Código, prompts, evals — no
+## Código, prompts, evals — no pegar aquí
 
-- `packages/core/openexecutive/prompts/` y cualquier persona/domain prompt
+Los prompts se **leen** en el fork (`prompts/executive_persona.py`, `prompts/domain_prompts.py`). Este repo no los copia.
+
+No se porta:
+
 - Agentes Python (`agents/`, `orchestrator/`, `workflows/`)
 - `evals/` (escenarios, LLM-as-judge, rúbricas)
 - Scripts de operador (Fly secrets, Google auth)
 - Architecture internals, audit log de app, people/talent modules de producto
+- Un noveno asiento Head of Talent
 
 ## Semántica que no se copia
 
@@ -63,6 +72,8 @@ Apache 2.0 exige atribución (ver [NOTICE](../NOTICE)), no un fork disfrazado de
 | Tareas / follow-ups del scheduler | Solo OmniFocus Mail Drop |
 | CMO = GTM genérico de la app | CMO vivo = GTM de compañía; nunca clon de Social Trends / Idea Filter / Social Pack |
 | Ocho asientos en caliente + router de producto | Ocho vivos; Open Executive invoca por DM y resuelve; sin sala de grupo |
+| MBA embebido en RAG de la app | MBA se lee en el fork; OpenExec-Grok no lo reemplaza |
+| TALENT_PROMPT en caliente | Hueco conocido; no hay bot |
 
 ## Qué sí se copia (idea)
 

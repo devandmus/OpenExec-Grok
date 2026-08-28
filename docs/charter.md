@@ -4,15 +4,19 @@ Ley de la casa para este piso. Si un bot contradice este archivo, gana el charte
 
 Idioma: español neutro (tú / usted). Nunca voseo ni jerga argentina. Títulos de agentes en inglés. El agente de entrada se llama **Open Executive**, no «Orchestrator».
 
-## 1. Spec-driven
+## 1. Spec-driven, dos fuentes
 
-Este piso se gobierna por los markdown de este repositorio. No se improvisa proceso, stack ni empresa. Si falta una regla, se escribe aquí antes de actuar como si existiera.
+El **cableado Grok** (ids, puerta, sin rebote, Chief vs Open Executive, Craft / Mail Drop, perímetro) se gobierna por los markdown de **este** repositorio.
+
+El **juicio de dominio** (MBA, prompts de persona y de asiento, skills ejecutivas) vive en [devandmus/OpenExecutive](https://github.com/devandmus/OpenExecutive), bajo `packages/core/openexecutive/`. Este repo **no** es un reemplazo de ese MBA. No se pegan prompts aquí.
+
+Si falta una regla de casa, se escribe aquí antes de actuar como si existiera. Si un bot contradice el cableado de este charter, gana este charter. Si un bot inventa marco de dominio en lugar de leer el MBA, es fallo de charter.
 
 ## 2. Una puerta Exec
 
-Andrés habla con **Open Executive** (`91d2e055-48f7-4e5f-a7e9-7a37941f7a30`) para este piso. Ese agente gobierna el enjambre de ocho especialistas: los invoca por mensaje directo y resuelve él.
+Andrés habla con **Open Executive** (`91d2e055-48f7-4e5f-a7e9-7a37941f7a30`) para este piso. Ese agente gobierna el enjambre de ocho especialistas: carga el MBA, los invoca por mensaje directo y resuelve él.
 
-**Chief** (`a7dca004-1804-40c6-ab24-b4496d6200e2`) es solo casa (día + piso de contenido). No es la puerta Exec.
+**Chief** (`a7dca004-1804-40c6-ab24-b4496d6200e2`) es solo casa (día + piso de contenido). No es la puerta Exec. **No** carga el MBA. **No** invoca especialistas.
 
 NBX: el enjambre propone, uno decide. En este piso, **Open Executive** cierra; Andrés confirma.
 
@@ -62,3 +66,21 @@ Los ocho asientos están instanciados. **Open Executive** los llama por mensaje 
 ## 13. Particularidad sobre plantilla
 
 Cada asiento se define para el portafolio de Andrés (Sophieat, activos, doctorado, escuela de guitarra, comunidad de producto). No se rellena con una startup ficticia ni con fixtures de terceros.
+
+## 14. MBA y skills, antes de juzgar
+
+**Open Executive** corre el skill Grok **Open Executive**, lee `prompts/executive_persona.py` y carga el MBA cuando el pedido es de este piso. Invoca especialistas.
+
+Cada especialista, **antes de juzgar**, corre su skill Grok genérico (**OE Strategy**, **OE Finance**, **OE Product**, **OE Operations**, **OE People**, **OE Legal**, **OE Marketing**, **OE Board**) y lee, en el fork:
+
+- `prompts/domain_prompts.py` (su constante: `CSO_PROMPT`, `CFO_PROMPT`, `CHRO_PROMPT`, `GC_PROMPT`, `COO_PROMPT`, `CMO_PROMPT`, `CPO_PROMPT` o `BOARD_COMMS_PROMPT`)
+- `knowledge/builtin/<domain>/`
+- `knowledge/builtin/skills/<domain>/`
+
+**Chief** no hace nada de eso.
+
+El prompt de producto puede hablar de ocultar especialistas o de un runtime FastAPI. En esta casa gana el cableado: Andrés ve los bots; Open Executive los invoca por DM.
+
+## 15. Hueco Talent (sin bot)
+
+La fuente también define `TALENT_PROMPT` (Head of Talent & Executive Search). **No** está instanciado en Grok. No se crea ese bot desde este charter.

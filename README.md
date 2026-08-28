@@ -9,9 +9,9 @@ Títulos de agentes: en inglés. Cuerpo: español neutro.
 ## Cómo usarlo
 
 1. Para el piso **Exec**, habla con **Open Executive**. Es el único punto de entrada.
-2. **Open Executive** invoca especialistas por mensaje directo y **él** responde. Nunca «pregúntale a CSO».
+2. **Open Executive** carga el MBA, invoca especialistas por mensaje directo y **él** responde. Nunca «pregúntale a CSO».
 3. Andrés no opera en un grupo. No hay sala de debate.
-4. **Chief** es solo casa: el día y el piso de contenido. Si el tema es dominio Exec, va a **Open Executive**.
+4. **Chief** es solo casa: el día y el piso de contenido. No carga el MBA ni invoca especialistas. Si el tema es dominio Exec, va a **Open Executive**.
 
 | Quién | Rol | Id Grok |
 |---|---|---|
@@ -37,15 +37,32 @@ WOM es combustible, no la identidad de este consejo. IRC Abogados no entra aquí
 
 Si un número no está escrito, se marca `unknown — do not invent`. Nadie inventa saldos, métricas ni una empresa ficticia.
 
+## Fuente de verdad del consejo
+
+Este repo es el **mapa de cableado Grok**: ids, frontera Chief vs Open Executive, Craft / Mail Drop, perímetro. **No** reemplaza el MBA.
+
+La fuente de verdad del consejo es [devandmus/OpenExecutive](https://github.com/devandmus/OpenExecutive), bajo `packages/core/openexecutive/`:
+
+- `prompts/executive_persona.py`
+- `prompts/domain_prompts.py` — `CSO_PROMPT`, `CFO_PROMPT`, `CHRO_PROMPT`, `GC_PROMPT`, `COO_PROMPT`, `CMO_PROMPT`, `CPO_PROMPT`, `BOARD_COMMS_PROMPT`
+- `knowledge/builtin/<domain>/` — markdown MBA
+- `knowledge/builtin/skills/<domain>/` — skills ejecutivas
+
+En Grok hay skills **genéricos**: **Open Executive**, **OE Strategy**, **OE Finance**, **OE Product**, **OE Operations**, **OE People**, **OE Legal**, **OE Marketing**, **OE Board**.
+
+Cada perfil de especialista, **antes de juzgar**, debe correr su skill y leer esas rutas. **Open Executive** carga el MBA e invoca especialistas. **Chief** no carga el MBA ni invoca especialistas.
+
+Hueco conocido (no crear bot): la fuente también tiene `TALENT_PROMPT` (Head of Talent & Executive Search). No está instanciado.
+
 ## Enjambre vivo
 
 **Entrada** (no es asiento de dominio):
 
-- **Open Executive** — `91d2e055-48f7-4e5f-a7e9-7a37941f7a30` — gobierna el enjambre; invoca por mensaje directo y resuelve. Nombre visible: **Open Executive**, no «Orchestrator».
+- **Open Executive** — `91d2e055-48f7-4e5f-a7e9-7a37941f7a30` — gobierna el enjambre; carga el MBA; invoca por mensaje directo y resuelve. Nombre visible: **Open Executive**, no «Orchestrator».
 
 **Casa** (fuera del enjambre Exec):
 
-- **Chief** — `a7dca004-1804-40c6-ab24-b4496d6200e2` — día + piso de contenido.
+- **Chief** — `a7dca004-1804-40c6-ab24-b4496d6200e2` — día + piso de contenido. No carga el MBA. No invoca especialistas.
 
 **Ocho especialistas** (vivos; **Open Executive** los llama por mensaje directo):
 
@@ -80,7 +97,7 @@ El agente de entrada de este piso se llama **Open Executive** (Grok, id arriba).
 
 Open Executive (SenteLabsAI) es un ejecutivo virtual con ocho especialistas, perfil de empresa, RAG, memoria episódica y scheduler, sobre Claude + FastAPI + Next.js. El usuario final no ve a los especialistas.
 
-Aquí se porta la **idea** (consejo, una puerta, perfil, asientos con resultado/dueño/entradas/salidas/HITL/no-hará, decisiones por escrito). No se porta el stack. Andrés opera solo con el agente de entrada; los especialistas existen como bots Grok y se invocan por mensaje directo.
+Aquí se porta la **idea** (consejo, una puerta, perfil, asientos con resultado/dueño/entradas/salidas/HITL/no-hará, decisiones por escrito). No se porta el stack. El juicio de dominio se **lee** en el fork (prompts + MBA); no se pega a este repo. Andrés opera solo con el agente de entrada; los especialistas existen como bots Grok y se invocan por mensaje directo.
 
 Qué se rechaza: [docs/not-copied.md](docs/not-copied.md).
 
@@ -97,8 +114,8 @@ Apache 2.0. Ver [NOTICE](NOTICE) y [LICENSE](LICENSE). Este repo no copia prompt
 
 | Archivo | Para qué |
 |---|---|
-| [docs/charter.md](docs/charter.md) | Ley de la casa: sin rebote; Open Executive resuelve; sin sala de grupo |
-| [docs/roster.md](docs/roster.md) | Open Executive + ocho asientos vivos |
-| [docs/routing.md](docs/routing.md) | Andrés → Open Executive → DM a especialista(s) → Open Executive resuelve |
+| [docs/charter.md](docs/charter.md) | Ley de la casa: sin rebote; Open Executive carga el MBA; Chief no |
+| [docs/roster.md](docs/roster.md) | Open Executive + ocho asientos vivos; skills Grok; hueco Talent |
+| [docs/routing.md](docs/routing.md) | Andrés → Open Executive → DM (skill + MBA) → Open Executive resuelve |
 | [docs/portfolio.md](docs/portfolio.md) | Perfil de portafolio; desconocidos marcados |
 | [docs/not-copied.md](docs/not-copied.md) | Qué de OpenExecutive no se porta |

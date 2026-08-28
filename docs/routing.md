@@ -1,11 +1,11 @@
 # Routing
 
-Cómo entra un pedido y a quién le toca. Andrés opera solo con el agente de entrada. Ese agente invoca especialistas por mensaje directo y resuelve él.
+Cómo entra un pedido y a quién le toca. Andrés opera solo con el agente de entrada. Ese agente carga el MBA, invoca especialistas por mensaje directo y resuelve él. Este archivo es cableado, no un reemplazo del MBA.
 
 | Canal | Id Grok | Uso |
 |---|---|---|
-| DM **Open Executive** | `91d2e055-48f7-4e5f-a7e9-7a37941f7a30` | Única vía del piso Exec. |
-| DM **Chief** | `a7dca004-1804-40c6-ab24-b4496d6200e2` | Día + piso de contenido. |
+| DM **Open Executive** | `91d2e055-48f7-4e5f-a7e9-7a37941f7a30` | Única vía del piso Exec. Carga el MBA. Invoca especialistas. |
+| DM **Chief** | `a7dca004-1804-40c6-ab24-b4496d6200e2` | Día + piso de contenido. No MBA. No invoca especialistas. |
 | Canal **Exec** | `19b3438c-6870-4d5f-8bd2-5eb2cb6b9d9c` | Inerte. No usar. Andrés lo quitará de la barra. |
 
 ## Dos pisos
@@ -38,7 +38,9 @@ Si el pedido es copy, carril social, pack de diseño o campaña IRC → no es el
 - GTM / marca / PR de Sophieat u otra compañía → **CMO**
 - Gobierno / inversionistas (no hay ronda activa) → **Board**
 
-Open Executive elige a quién invocar. Puede ser uno o más. Andrés no va de puerta en puerta.
+Open Executive elige a quién invocar. Puede ser uno o más. Andrés no va de puerta en puerta. El especialista, **antes de juzgar**, corre su skill Grok genérico y lee las rutas del fork (`prompts/domain_prompts.py`, `knowledge/builtin/<domain>/`, `knowledge/builtin/skills/<domain>/`). Detalle: [roster.md](roster.md).
+
+**Chief** no carga el MBA ni invoca a nadie del enjambre.
 
 ## Por defecto
 
@@ -63,7 +65,9 @@ sequenceDiagram
         alt piso de contenido
             OE-->>Andrés: eso es Chief / piso de contenido
         else piso Exec
+            OE->>OE: skill Open Executive + MBA
             OE->>Esp: mensaje directo
+            Esp->>Esp: skill OE + leer rutas del fork
             Esp-->>OE: juicio
             OE-->>Andrés: resuelve él
             Note over OE: HITL de un toque
@@ -97,4 +101,5 @@ No hay rama “sala Exec”. Ese canal no se usa.
 | Contrato, IP, compliance básico (no eres el abogado de IRC) | Open Executive → General Counsel |
 | GTM de empresa distinto de @devandmus | Open Executive → CMO (nunca clon del piso social) |
 | Fundraising / deck de inversionistas | Open Executive → Board (no hay ronda activa) |
+| Búsqueda ejecutiva / Head of Talent | Hueco: `TALENT_PROMPT` — no hay bot. No instanciar. |
 | Canal Exec | Inerte. No usar. Andrés lo quitará de la barra. |
