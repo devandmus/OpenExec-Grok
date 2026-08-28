@@ -2,6 +2,12 @@
 
 Cómo entra un pedido y a quién le toca. Andrés opera solo con el agente de entrada. Ese agente invoca especialistas por mensaje directo y resuelve él.
 
+| Canal | Id Grok | Uso |
+|---|---|---|
+| DM **Open Executive** | `91d2e055-48f7-4e5f-a7e9-7a37941f7a30` | Única vía del piso Exec. |
+| DM **Chief** | `a7dca004-1804-40c6-ab24-b4496d6200e2` | Día + piso de contenido. |
+| Canal **Exec** | `19b3438c-6870-4d5f-8bd2-5eb2cb6b9d9c` | Inerte. No usar. Andrés lo quitará de la barra. |
+
 ## Dos pisos
 
 | Piso | Para qué | Este consejo |
@@ -9,7 +15,7 @@ Cómo entra un pedido y a quién le toca. Andrés opera solo con el agente de en
 | **Contenido** (ya en vivo) | Research, Social Trends, Idea Filter, Social Pack, Campaigns | No. No reemplazar. Vía **Chief**. |
 | **Exec** (este repo) | Apuestas del portafolio, caja, MVP, ops, gente, legal básico, GTM de compañía, board | Sí, vía **Open Executive**. |
 
-No hay tercera vía. El canal **Exec** (`19b3438c-6870-4d5f-8bd2-5eb2cb6b9d9c`) está **inerte**. No publiques ahí. Andrés lo quitará de la barra.
+No hay tercera vía. El canal Exec está inerte: no publiques ahí.
 
 ### Piso de contenido — no absorber
 
