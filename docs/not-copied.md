@@ -26,7 +26,7 @@ Apache 2.0 exige atribución (ver [NOTICE](../NOTICE)), no un fork disfrazado de
 - Poller IMAP/SMTP de “email executive”
 - CLI `openexecutive chat` / upload API
 - Web UI en localhost:3000
-- Especialistas **ocultos** detrás de una sola voz (en Grok los chats se ven)
+- Especialistas **ocultos** detrás de una sola voz (Andrés opera con Open Executive; los especialistas existen y se invocan por DM)
 
 ## Orquestación y relojes — no
 
@@ -34,7 +34,8 @@ Apache 2.0 exige atribución (ver [NOTICE](../NOTICE)), no un fork disfrazado de
 - Router con tool-use a un registry de ocho
 - Scheduler / job runner / `UPDATE … RETURNING`
 - Ocho cron clocks (uno por asiento) o alerts proactivos de producto
-- Rutinas en CSO, CFO o CPO (charter: cero relojes en los tres vivos)
+- Rutinas en los asientos Exec o en Open Executive (charter: cero relojes en el enjambre)
+- Un canal de grupo como sala de debate (el canal Exec está inerte)
 
 ## Conocimiento y fixtures — no
 
@@ -56,12 +57,12 @@ Apache 2.0 exige atribución (ver [NOTICE](../NOTICE)), no un fork disfrazado de
 
 | Open Executive | Esta casa |
 |---|---|
-| Una voz ejecutiva; el usuario no ve especialistas | Chats Grok visibles; Chief es puerta, no máscara |
+| Una voz ejecutiva; el usuario no ve especialistas | Andrés opera con **Open Executive**; los especialistas existen y se invocan por DM |
 | Company = startup onboarded | Company = portafolio de Andrés; nada ficticio |
 | Memoria episódica en SQLite | Decisiones por escrito en Craft (Inbox / Unsorted) |
 | Tareas / follow-ups del scheduler | Solo OmniFocus Mail Drop |
-| CMO = GTM genérico de la app | CMO papel ≠ clon de Social Trends / Idea Filter / Social Pack |
-| Ocho asientos en caliente | Tres vivos; cinco en papel hasta que haya trabajo semanal |
+| CMO = GTM genérico de la app | CMO vivo = GTM de compañía; nunca clon de Social Trends / Idea Filter / Social Pack |
+| Ocho asientos en caliente + router de producto | Ocho vivos; Open Executive invoca por DM y resuelve; sin sala de grupo |
 
 ## Qué sí se copia (idea)
 

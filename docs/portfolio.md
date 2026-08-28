@@ -72,7 +72,7 @@ CFO nunca inventa balances ni mueve dinero.
 - Operador y HITL: Andrés.
 - Partner en Sophieat: sí (nombre legal / % : `unknown — do not invent`).
 - Headcount del portafolio como empresa: no aplica; no se finge un org chart.
-- Hiring semanal: no hay (CHRO en papel).
+- Hiring semanal: no hay. Chief People Officer está vivo; Open Executive lo llama si hay un pedido de gente.
 
 ## Qué no es este perfil
 
