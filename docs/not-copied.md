@@ -26,7 +26,7 @@ Apache 2.0 exige atribución (ver [NOTICE](../NOTICE)), no un fork disfrazado de
 - Poller IMAP/SMTP de “email executive”
 - CLI `openexecutive chat` / upload API
 - Web UI en localhost:3000
-- Especialistas **ocultos** detrás de una sola voz (en Grok los chats se ven)
+- Especialistas **ocultos** detrás de una sola voz (Andrés opera con Open Executive; los especialistas existen y se invocan por DM)
 
 ## Orquestación y relojes — no
 
@@ -34,34 +34,46 @@ Apache 2.0 exige atribución (ver [NOTICE](../NOTICE)), no un fork disfrazado de
 - Router con tool-use a un registry de ocho
 - Scheduler / job runner / `UPDATE … RETURNING`
 - Ocho cron clocks (uno por asiento) o alerts proactivos de producto
-- Rutinas en CSO, CFO o CPO (charter: cero relojes en los tres vivos)
+- Rutinas en los asientos Exec o en Open Executive (charter: cero relojes en el enjambre)
+- Un canal de grupo como sala de debate (el canal Exec está inerte)
 
-## Conocimiento y fixtures — no
+## Conocimiento y fixtures — no copiar aquí
 
-- RAG sobre markdown MBA (`knowledge/builtin/` u equivalente)
+Este repo **no** duplica el MBA. Los bots del enjambre **leen** el fork [devandmus/OpenExecutive](https://github.com/devandmus/OpenExecutive) (`packages/core/openexecutive/knowledge/builtin/` y `prompts/`). No se pega el texto de esos archivos aquí.
+
+No se porta:
+
+- RAG / Chroma / índices vectoriales sobre ese markdown
 - Colección `company_docs` / upload de decks al vector store
 - Fixtures **Halcyon Motors**, **Meridian Petroleum**, **Tandem Robotics**
 - Profiles, rosters o docs de demo de esas empresas
 - Completar un “company profile” de startup de muestra
+- `TALENT_PROMPT` como bot Grok (existe en la fuente; no está instanciado)
 
-## Código, prompts, evals — no
+## Código, prompts, evals — no pegar aquí
 
-- `packages/core/openexecutive/prompts/` y cualquier persona/domain prompt
+Los prompts se **leen** en el fork (`prompts/executive_persona.py`, `prompts/domain_prompts.py`). Este repo no los copia.
+
+No se porta:
+
 - Agentes Python (`agents/`, `orchestrator/`, `workflows/`)
 - `evals/` (escenarios, LLM-as-judge, rúbricas)
 - Scripts de operador (Fly secrets, Google auth)
 - Architecture internals, audit log de app, people/talent modules de producto
+- Un noveno asiento Head of Talent
 
 ## Semántica que no se copia
 
 | Open Executive | Esta casa |
 |---|---|
-| Una voz ejecutiva; el usuario no ve especialistas | Chats Grok visibles; Chief es puerta, no máscara |
+| Una voz ejecutiva; el usuario no ve especialistas | Andrés opera con **Open Executive**; los especialistas existen y se invocan por DM |
 | Company = startup onboarded | Company = portafolio de Andrés; nada ficticio |
 | Memoria episódica en SQLite | Decisiones por escrito en Craft (Inbox / Unsorted) |
 | Tareas / follow-ups del scheduler | Solo OmniFocus Mail Drop |
-| CMO = GTM genérico de la app | CMO papel ≠ clon de Social Trends / Idea Filter / Social Pack |
-| Ocho asientos en caliente | Tres vivos; cinco en papel hasta que haya trabajo semanal |
+| CMO = GTM genérico de la app | CMO vivo = GTM de compañía; nunca clon de Social Trends / Idea Filter / Social Pack |
+| Ocho asientos en caliente + router de producto | Ocho vivos; Open Executive invoca por DM y resuelve; sin sala de grupo |
+| MBA embebido en RAG de la app | MBA se lee en el fork; OpenExec-Grok no lo reemplaza |
+| TALENT_PROMPT en caliente | Hueco conocido; no hay bot |
 
 ## Qué sí se copia (idea)
 
